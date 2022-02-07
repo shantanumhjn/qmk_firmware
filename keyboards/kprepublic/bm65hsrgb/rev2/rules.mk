@@ -24,6 +24,7 @@ LTO_ENABLE = yes
 
 # RGB Matrix is required to support per-key LEDs connected to IS31FL3741.
 RGB_MATRIX_ENABLE = yes
+RGBLIGHT_SUPPORTED = no
 
 # The custom RGB Matrix driver combines IS31FL3741 and WS2812; things that are
 # normally done by common_features.mk for both of these drivers need to be done
