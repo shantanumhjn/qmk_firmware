@@ -20,8 +20,6 @@ LTO_ENABLE = yes
 
 LAYOUTS = 65_ansi_blocker
 
-LTO_ENABLE = yes
-
 # RGB Matrix is required to support per-key LEDs connected to IS31FL3741.
 RGB_MATRIX_ENABLE = yes
 RGBLIGHT_SUPPORTED = no
