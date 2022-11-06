@@ -37,11 +37,12 @@
   #define RGB_MATRIX_SAT_STEP 8
   #define RGB_MATRIX_VAL_STEP 5
   #define RGB_MATRIX_SPD_STEP 10
+  #define RGB_DISABLE_TIMEOUT 60000                     // https://docs.qmk.fm/#/feature_rgb_matrix?id=additional-configh-options
+  #define RGB_DISABLE_WHEN_USB_SUSPENDED
 
   // Effects
-  #define ENABLE_RGB_MATRIX_DIGITAL_RAIN
-  #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE        // Hue & value pulse near a single key hit then fades value out
-  #define ENABLE_RGB_MATRIX_SPLASH                     // Full gradient & value pulse away from a single key hit then fades value out
+  #define ENABLE_RGB_MATRIX_SPLASH                    // Full gradient & value pulse away from a single key hit then fades value out
+  #define ENABLE_RGB_MATRIX_BREATHING                 // Single hue brightness cycling animation
 #endif
 
 #ifdef OLED_ENABLE
@@ -53,6 +54,8 @@
   #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #endif
 
+
+// add mapping to some unused keys
 #define MIRYOKU_MAPPING( \
       K00,  K01,  K02,  K03,  K04,         K05,  K06,  K07,  K08,  K09, \
       K10,  K11,  K12,  K13,  K14,         K15,  K16,  K17,  K18,  K19, \
