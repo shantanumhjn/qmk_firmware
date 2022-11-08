@@ -9,9 +9,9 @@
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-  if (!is_keyboard_master()) {
-    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-  }
+  // if (!is_keyboard_master()) {
+  //   return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+  // }
   return rotation;
 }
 
@@ -148,13 +148,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 */
 
 bool oled_task_user(void) {
-  if (is_keyboard_master()) {
+  if (!is_keyboard_master()) {
     oled_render_layer_state();
     oled_render_mod_state();
     oled_render_led_state();
     // oled_write_raw_P(balloon_logo[oled_tracker], sizeof(balloon_logo[oled_tracker]));
-  } else {
-    oled_render_logo();
   }
   return false;
 }

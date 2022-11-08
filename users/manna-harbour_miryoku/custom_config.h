@@ -5,9 +5,7 @@
 
 #pragma once
 
-#define XXX KC_NO
-
-#define MASTER_LEFT
+#define MASTER_RIGHT
 
 #define IGNORE_MOD_TAP_INTERRUPT
 
@@ -27,6 +25,26 @@
 #define TAPPING_TERM 250
 
 
+# ifdef POINTING_DEVICE_ENABLE
+#   define SPLIT_POINTING_ENABLE
+#   define POINTING_DEVICE_RIGHT
+#   define CIRQUE_PINNACLE_DIAMETER_MM 40
+
+// absolute mode
+#   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
+#   define CIRQUE_PINNACLE_TAP_ENABLE                                   // only works on master
+#   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+#   define POINTING_DEVICE_GESTURES_CURSOR_GLIDE_ENABLE
+
+// relative mode
+// #   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
+// #   define CIRQUE_PINNACLE_TAP_ENABLE
+// #   define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
+// #   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+
+# endif
+
+
 #ifdef RGB_MATRIX_ENABLE
   #define RGB_MATRIX_KEYPRESSES
   #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
@@ -38,7 +56,6 @@
   #define RGB_MATRIX_VAL_STEP 5
   #define RGB_MATRIX_SPD_STEP 10
   #define RGB_DISABLE_TIMEOUT 60000                     // https://docs.qmk.fm/#/feature_rgb_matrix?id=additional-configh-options
-  #define RGB_DISABLE_WHEN_USB_SUSPENDED
 
   // Effects
   #define ENABLE_RGB_MATRIX_SPLASH                    // Full gradient & value pulse away from a single key hit then fades value out
@@ -49,12 +66,13 @@
   #define SPLIT_LAYER_STATE_ENABLE
   #define SPLIT_LED_STATE_ENABLE
   #define SPLIT_MODS_ENABLE
-  #define SPLIT_OLED_ENABLE
+  // #define SPLIT_OLED_ENABLE
   #define OLED_TIMEOUT 60000
   #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #endif
 
 
+#define XXX KC_NO
 // add mapping to some unused keys
 #define MIRYOKU_MAPPING( \
       K00,  K01,  K02,  K03,  K04,         K05,  K06,  K07,  K08,  K09, \
