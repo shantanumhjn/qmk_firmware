@@ -5,7 +5,7 @@
 
 #pragma once
 
-#define MASTER_RIGHT
+#define MASTER_LEFT
 
 #define IGNORE_MOD_TAP_INTERRUPT
 
@@ -31,23 +31,23 @@
 #   define CIRQUE_PINNACLE_DIAMETER_MM 40
 
 // absolute mode
-#   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
-#   define CIRQUE_PINNACLE_TAP_ENABLE                                   // only works on master
-#   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
-#   define POINTING_DEVICE_GESTURES_CURSOR_GLIDE_ENABLE
+// #   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
+// #   define CIRQUE_PINNACLE_TAP_ENABLE                                   // only works on master
+// #   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+// #   define POINTING_DEVICE_GESTURES_CURSOR_GLIDE_ENABLE
 
 // relative mode
-// #   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
-// #   define CIRQUE_PINNACLE_TAP_ENABLE
-// #   define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
-// #   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+#   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
+#   define CIRQUE_PINNACLE_TAP_ENABLE
+#   define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
+#   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
 
 # endif
 
 
 #ifdef RGB_MATRIX_ENABLE
-  #define RGB_MATRIX_KEYPRESSES
-  #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+  // #define RGB_MATRIX_KEYPRESSES
+  // #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
   #define RGB_DISABLE_WHEN_USB_SUSPENDED
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
   #define RGB_MATRIX_LED_FLUSH_LIMIT 16
@@ -58,7 +58,7 @@
   #define RGB_DISABLE_TIMEOUT 60000                     // https://docs.qmk.fm/#/feature_rgb_matrix?id=additional-configh-options
 
   // Effects
-  #define ENABLE_RGB_MATRIX_SPLASH                    // Full gradient & value pulse away from a single key hit then fades value out
+  // #define ENABLE_RGB_MATRIX_SPLASH                    // Full gradient & value pulse away from a single key hit then fades value out
   #define ENABLE_RGB_MATRIX_BREATHING                 // Single hue brightness cycling animation
 #endif
 
