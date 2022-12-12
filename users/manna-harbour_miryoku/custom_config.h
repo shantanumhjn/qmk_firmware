@@ -5,7 +5,7 @@
 
 #pragma once
 
-#define MASTER_LEFT
+#define MASTER_RIGHT
 
 #define IGNORE_MOD_TAP_INTERRUPT
 
@@ -31,16 +31,16 @@
 #   define CIRQUE_PINNACLE_DIAMETER_MM 40
 
 // absolute mode
-// #   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
-// #   define CIRQUE_PINNACLE_TAP_ENABLE                                   // only works on master
-// #   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+#   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
+#   define CIRQUE_PINNACLE_TAP_ENABLE                                   // only works on master
+#   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
 // #   define POINTING_DEVICE_GESTURES_CURSOR_GLIDE_ENABLE
 
 // relative mode
-#   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
-#   define CIRQUE_PINNACLE_TAP_ENABLE
-#   define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
-#   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+// #   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
+// #   define CIRQUE_PINNACLE_TAP_ENABLE
+// #   define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
+// #   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
 
 # endif
 
@@ -93,6 +93,13 @@ XXX,      K20,  K21,  K22,  K23,  K24,         K25,  K26,  K27,  K28,  K29,  KC_
 // backslash instead of quote
 #define MIRYOKU_LAYER_BASE \
 KC_Q,              KC_W,              KC_F,              KC_P,                KC_G,              KC_J,              KC_L,               KC_U,              KC_Y,              KC_SCLN,           \
+LCTL_T(KC_A),      LALT_T(KC_R),      LGUI_T(KC_S),      LSFT_T(KC_T),        KC_D,              KC_H,              LSFT_T(KC_N),       LGUI_T(KC_E),      LALT_T(KC_I),      LCTL_T(KC_O),      \
+LT(U_BUTTON,KC_Z), ALGR_T(KC_X),      KC_C,              KC_V,                KC_B,              KC_K,              KC_M,               KC_COMM,           ALGR_T(KC_DOT),    LT(U_BUTTON,KC_SLSH),\
+U_NP,              U_NP,              LT(U_MEDIA,KC_ESC),LT(U_NAV,KC_BSPC),   LT(U_MOUSE,KC_TAB),LT(U_SYM,KC_ENT),  LT(U_NUM,KC_SPC),   LT(U_FUN,KC_DEL),  U_NP,              U_NP
+
+
+#define MIRYOKU_LAYER_EXTRA \
+KC_Q,              KC_W,              KC_F,              KC_P,                KC_G,              KC_J,              KC_L,               KC_U,              KC_Y,              KC_SCLN,           \
 LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),        KC_D,              KC_H,              LSFT_T(KC_N),       LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),      \
 LT(U_BUTTON,KC_Z), ALGR_T(KC_X),      KC_C,              KC_V,                KC_B,              KC_K,              KC_M,               KC_COMM,           ALGR_T(KC_DOT),    LT(U_BUTTON,KC_SLSH),\
 U_NP,              U_NP,              LT(U_MEDIA,KC_ESC),LT(U_NAV,KC_BSPC),   LT(U_MOUSE,KC_TAB),LT(U_SYM,KC_ENT),  LT(U_NUM,KC_SPC),   LT(U_FUN,KC_DEL),  U_NP,              U_NP
@@ -102,16 +109,16 @@ U_NP,              U_NP,              LT(U_MEDIA,KC_ESC),LT(U_NAV,KC_BSPC),   LT
 // replace backspace with space
 // add ctrl + win to workspace movements
 #define MIRYOKU_LAYER_NAV \
-QK_BOOT,           DF(U_TAP),         DF(U_EXTRA),       DF(U_BASE),        U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
-KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              KC_CAPS,           KC_LEFT,           KC_DOWN,           KC_UP,             KC_RGHT,           \
-U_NA,              KC_ALGR,           DF(U_NUM),         DF(U_NAV),LCTL(KC_LGUI),              KC_INS,            KC_HOME,           KC_PGDN,           KC_PGUP,           KC_END,            \
+TD(U_TD_BOOT),     TD(U_TD_U_TAP),    TD(U_TD_U_EXTRA),  TD(U_TD_U_BASE),   U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
+KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              CW_TOGG,           KC_LEFT,           KC_DOWN,           KC_UP,             KC_RGHT,           \
+U_NA,              KC_ALGR,           TD(U_TD_U_NUM),    TD(U_TD_U_NAV),    U_NA,              KC_INS,            KC_HOME,           KC_PGDN,           KC_PGUP,           KC_END,            \
 U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              KC_ENT,            KC_SPC,            KC_DEL,            U_NP,              U_NP
 
 
 // function layer
 // replace space with backspace
 #define MIRYOKU_LAYER_FUN \
-KC_F12,            KC_F7,             KC_F8,             KC_F9,             KC_PSCR,           U_NA,              DF(U_BASE),        DF(U_EXTRA),       DF(U_TAP),         QK_BOOT,           \
-KC_F11,            KC_F4,             KC_F5,             KC_F6,             KC_SLCK,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
-KC_F10,            KC_F1,             KC_F2,             KC_F3,             KC_PAUS,           U_NA,              DF(U_FUN),         DF(U_MEDIA),       KC_ALGR,           U_NA,              \
+KC_F12,            KC_F7,             KC_F8,             KC_F9,             KC_PSCR,           U_NA,              TD(U_TD_U_BASE),   TD(U_TD_U_EXTRA),  TD(U_TD_U_TAP),    TD(U_TD_BOOT),     \
+KC_F11,            KC_F4,             KC_F5,             KC_F6,             KC_SCRL,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
+KC_F10,            KC_F1,             KC_F2,             KC_F3,             KC_PAUS,           U_NA,              TD(U_TD_U_FUN),    TD(U_TD_U_MEDIA),  KC_ALGR,           U_NA,              \
 U_NP,              U_NP,              KC_APP,            KC_BSPC,           KC_TAB,            U_NA,              U_NA,              U_NA,              U_NP,              U_NP
