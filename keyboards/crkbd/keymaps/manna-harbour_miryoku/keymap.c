@@ -21,9 +21,9 @@ enum layers { BASE, EXTRA, TAP, BUTTON, NAV, MOUSE, MEDIA, NUM, SYM, FUN };
 void oled_render_layer_state(void) {
   oled_write("Layer: ", false);
 
-  switch (get_highest_layer(layer_state)) {
+  switch (get_highest_layer(default_layer_state|layer_state)) {
   case BASE:
-    oled_write("Base", false);
+    oled_write("Mac", false);
     break;
   case BUTTON:
     oled_write("Button", false);
@@ -47,10 +47,10 @@ void oled_render_layer_state(void) {
     oled_write("Function", false);
     break;
   case EXTRA:
-    oled_write("Extra", false);
+    oled_write("Windows", false);
     break;
   case TAP:
-    oled_write("Tap", false);
+    oled_write("QWERTY", false);
     break;
   }
 
