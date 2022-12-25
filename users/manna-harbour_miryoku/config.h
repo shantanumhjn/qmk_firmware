@@ -8,8 +8,9 @@
 #include "custom_config.h"
 
 // default but used in macros
-#undef TAPPING_TERM
-#define TAPPING_TERM 200
+// set in custom config
+// #undef TAPPING_TERM
+// #define TAPPING_TERM 200
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
