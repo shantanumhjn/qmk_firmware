@@ -19,3 +19,50 @@ XXX,  K10,  K11,  K12,  K13,  K14,         K15,  K16,  K17,  K18,  K19,  XXX, \
 XXX,  K20,  K21,  K22,  K23,  K24,         K25,  K26,  K27,  K28,  K29,  XXX , \
                   K32,  K33,  K34,         K35,  K36,  K37 \
 )
+
+# ifdef POINTING_DEVICE_ENABLE
+#   define SPLIT_POINTING_ENABLE
+#   define POINTING_DEVICE_RIGHT
+#   undef CIRQUE_PINNACLE_DIAMETER_MM
+#   define CIRQUE_PINNACLE_DIAMETER_MM 40
+
+// absolute mode
+#   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
+#   define CIRQUE_PINNACLE_TAP_ENABLE                                   // only works on master
+#   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+// #   define POINTING_DEVICE_GESTURES_CURSOR_GLIDE_ENABLE
+
+// relative mode
+// #   define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
+// #   define CIRQUE_PINNACLE_TAP_ENABLE
+// #   define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
+// #   define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+
+# endif
+
+
+#ifdef RGB_MATRIX_ENABLE
+  // #define RGB_MATRIX_KEYPRESSES
+  // #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+  #define RGB_DISABLE_WHEN_USB_SUSPENDED
+  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
+  #define RGB_MATRIX_LED_FLUSH_LIMIT 16
+  #define RGB_MATRIX_HUE_STEP 8
+  #define RGB_MATRIX_SAT_STEP 8
+  #define RGB_MATRIX_VAL_STEP 5
+  #define RGB_MATRIX_SPD_STEP 10
+  #define RGB_DISABLE_TIMEOUT 60000                     // https://docs.qmk.fm/#/feature_rgb_matrix?id=additional-configh-options
+
+  // Effects
+  // #define ENABLE_RGB_MATRIX_SPLASH                    // Full gradient & value pulse away from a single key hit then fades value out
+  #define ENABLE_RGB_MATRIX_BREATHING                 // Single hue brightness cycling animation
+#endif
+
+#ifdef OLED_ENABLE
+  #define SPLIT_LAYER_STATE_ENABLE
+  #define SPLIT_LED_STATE_ENABLE
+  #define SPLIT_MODS_ENABLE
+  // #define SPLIT_OLED_ENABLE
+  #define OLED_TIMEOUT 60000
+  #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+#endif
