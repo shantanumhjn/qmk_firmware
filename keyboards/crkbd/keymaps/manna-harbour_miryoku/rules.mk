@@ -1,6 +1,6 @@
 # Copyright 2022 Shantanu Mahajan
 
-RGB_MATRIX_ENABLE 	= no
+RGB_MATRIX_ENABLE 	= yes
 OLED_ENABLE     	= yes
 OLED_DRIVER     	= SSD1306
 LTO_ENABLE      	= yes
@@ -8,4 +8,10 @@ LTO_ENABLE      	= yes
 POINTING_DEVICE_ENABLE = yes
 POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
 
-BOOTLOADER 			= atmel-dfu
+# for elite-c
+# BOOTLOADER 			= atmel-dfu
+# LTO_ENABLE = yes
+
+# for arcadia (rp2040)
+CONVERT_TO=promicro_rp2040
+LTO_ENABLE = no
