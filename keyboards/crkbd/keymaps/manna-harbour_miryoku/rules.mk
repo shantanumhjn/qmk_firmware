@@ -13,5 +13,6 @@ POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
 # LTO_ENABLE = yes
 
 # for arcadia (rp2040)
-CONVERT_TO=promicro_rp2040
+CONVERT_TO = promicro_rp2040
 LTO_ENABLE = no
+SERIAL_DRIVER = vendor
