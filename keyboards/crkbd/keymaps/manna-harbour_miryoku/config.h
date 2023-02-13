@@ -51,7 +51,8 @@ XXX,  K20,  K21,  K22,  K23,  K24,         K25,  K26,  K27,  K28,  K29,  XXX , \
   #define RGB_MATRIX_SAT_STEP 8
   #define RGB_MATRIX_VAL_STEP 5
   #define RGB_MATRIX_SPD_STEP 10
-  #define RGB_DISABLE_TIMEOUT 60000                     // https://docs.qmk.fm/#/feature_rgb_matrix?id=additional-configh-options
+  #define RGB_MATRIX_TIMEOUT 300000                     // https://docs.qmk.fm/#/feature_rgb_matrix?id=additional-configh-options
+  // #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_BREATHING  // do not know what this does
 
   // Effects
   #define ENABLE_RGB_MATRIX_ALPHAS_MODS	                          // Enables RGB_MATRIX_ALPHAS_MODS
@@ -102,6 +103,8 @@ XXX,  K20,  K21,  K22,  K23,  K24,         K25,  K26,  K27,  K28,  K29,  XXX , \
   // These modes also require the RGB_MATRIX_FRAMEBUFFER_EFFECTS define to be available.
   #define ENABLE_RGB_MATRIX_TYPING_HEATMAP	                      // Enables RGB_MATRIX_TYPING_HEATMAP
   #define ENABLE_RGB_MATRIX_DIGITAL_RAIN	                        // Enables RGB_MATRIX_DIGITAL_RAIN
+
+  #define ENABLE_RGB_MATRIX_EFFECT_MAX
 #endif
 
 #ifdef OLED_ENABLE
