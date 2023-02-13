@@ -5,9 +5,16 @@
 
 #include QMK_KEYBOARD_H
 #include <stdio.h>
+#include <string.h>
 
 
 #ifdef OLED_ENABLE
+
+#define U_OLED_SCROLL_TIME_MS 100
+
+static uint32_t     oled_timer = 0;
+static int8_t      oled_rgb_str_idx = 0;
+
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   // if (!is_keyboard_master()) {
   //   return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
@@ -23,38 +30,36 @@ void oled_render_layer_state(void) {
 
   switch (get_highest_layer(default_layer_state|layer_state)) {
   case BASE:
-    oled_write("Mac", false);
+    oled_write_ln("Mac", false);
     break;
   case BUTTON:
-    oled_write("Button", false);
+    oled_write_ln("Button", false);
     break;
   case MEDIA:
-    oled_write("Media", false);
+    oled_write_ln("Media", false);
     break;
   case NAV:
-    oled_write("Navigation", false);
+    oled_write_ln("Navigation", false);
     break;
   case MOUSE:
-    oled_write("Mouse", false);
+    oled_write_ln("Mouse", false);
     break;
   case SYM:
-    oled_write("Symbol", false);
+    oled_write_ln("Symbol", false);
     break;
   case NUM:
-    oled_write("Number", false);
+    oled_write_ln("Number", false);
     break;
   case FUN:
-    oled_write("Function", false);
+    oled_write_ln("Function", false);
     break;
   case EXTRA:
-    oled_write("Windows", false);
+    oled_write_ln("Windows", false);
     break;
   case TAP:
-    oled_write("QWERTY", false);
+    oled_write_ln("Qwerty", false);
     break;
   }
-
-  oled_write("\n", false);
 }
 
 void oled_render_led_state(void) {
@@ -82,6 +87,184 @@ void oled_render_logo(void) {
     0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4,
     0};
   oled_write_P(crkbd_logo, false);
+}
+
+void oled_render_rgb_state(void) {
+  char *effect_name = "";
+  switch (rgb_matrix_get_mode()) {
+    case 1:
+      effect_name = "Solid Color";
+      break;
+    case 2:
+      effect_name = "Alphas Mods";
+      break;
+    case 3:
+      effect_name = "Gradient Up Down";
+      break;
+    case 4:
+      effect_name = "Gradient Left Right";
+      break;
+    case 5:
+      effect_name = "Breathing";
+      break;
+    case 6:
+      effect_name = "Band Sat";
+      break;
+    case 7:
+      effect_name = "Band Val";
+      break;
+    case 8:
+      effect_name = "Band Pinwheel Sat";
+      break;
+    case 9:
+      effect_name = "Band Pinwheel Val";
+      break;
+    case 10:
+      effect_name = "Band Spiral Sat";
+      break;
+    case 11:
+      effect_name = "Band Spiral Val";
+      break;
+    case 12:
+      effect_name = "Cycle All";
+      break;
+    case 13:
+      effect_name = "Cycle Left Right";
+      break;
+    case 14:
+      effect_name = "Cycle Up Down";
+      break;
+    case 15:
+      effect_name = "Rainbow\\Moving Chevron";
+      break;
+    case 16:
+      effect_name = "Cycle Out In";
+      break;
+    case 17:
+      effect_name = "Cycle Out In Dual";
+      break;
+    case 18:
+      effect_name = "Cycle Pinwheel";
+      break;
+    case 19:
+      effect_name = "Cycle Spiral";
+      break;
+    case 20:
+      effect_name = "Dual Beacon";
+      break;
+    case 21:
+      effect_name = "Rainbow Beacon";
+      break;
+    case 22:
+      effect_name = "Rainbow Pinwheels";
+      break;
+    case 23:
+      effect_name = "Raindrops";
+      break;
+    case 24:
+      effect_name = "Jellybean Raindrops";
+      break;
+    case 25:
+      effect_name = "Hue Breathing";
+      break;
+    case 26:
+      effect_name = "Hue Pendulum";
+      break;
+    case 27:
+      effect_name = "Hue Wave";
+      break;
+    case 28:
+      effect_name = "Pixel Rain";
+      break;
+    case 29:
+      effect_name = "Pixel Flow";
+      break;
+    case 30:
+      effect_name = "Pixel Fractal";
+      break;
+    case 31:
+      effect_name = "Typing Heatmap";
+      break;
+    case 32:
+      effect_name = "Digital Rain";
+      break;
+    case 33:
+      effect_name = "Solid Reactive\\Simple";
+      break;
+    case 34:
+      effect_name = "Solid Reactive";
+      break;
+    case 35:
+      effect_name = "Solid Reactive\\Wide";
+      break;
+    case 36:
+      effect_name = "Solid Reactive\\Multiwide";
+      break;
+    case 37:
+      effect_name = "Solid Reactive\\Cross";
+      break;
+    case 38:
+      effect_name = "Solid Reactive\\Multicross";
+      break;
+    case 39:
+      effect_name = "Solid Reactive\\Nexus";
+      break;
+    case 40:
+      effect_name = "Solid Reactive\\Multinexus";
+      break;
+    case 41:
+      effect_name = "Splash";
+      break;
+    case 42:
+      effect_name = "Multisplash";
+      break;
+    case 43:
+      effect_name = "Solid Splash";
+      break;
+    case 44:
+      effect_name = "Solid Multisplash";
+      break;
+    default:
+      // Or use the write_ln shortcut over adding '\n' to the end of your string
+      effect_name = "Undefined";
+    }
+
+    if (strlen(effect_name) < 16) {
+      char display_str[21] = "RGB: ";
+      oled_write_ln(strcat(display_str, effect_name), false);
+      return;
+    }
+
+    // https://stackoverflow.com/questions/3082914/c-compile-error-variable-sized-object-may-not-be-initialized
+    // change the display if the time has elapsed
+    if (timer_elapsed32(oled_timer) > U_OLED_SCROLL_TIME_MS) {
+      oled_timer = timer_read32();
+      // strlen returns insigned int maybe?
+      if (oled_rgb_str_idx < 0 && -oled_rgb_str_idx >= strlen(effect_name)) {
+        // reset to the end of the oled
+        oled_rgb_str_idx = 14;
+      }
+
+      // oled with is 21 characters
+      char display_str[21] = "RGB: ";
+      for (uint8_t i = 5; i < 21; i++) {
+        display_str[i] = ' ';
+      }
+      display_str[20] = '\0';
+
+      if (oled_rgb_str_idx < 0) {
+        for (uint8_t i = 0; i < 15 && i <= strlen(effect_name); i++) {
+          display_str[5+i] = *(effect_name + i - oled_rgb_str_idx);
+        }
+      } else {
+        for (uint8_t i = oled_rgb_str_idx; i < 15 && (i-oled_rgb_str_idx) < strlen(effect_name) ; i++) {
+          display_str[5+i] = *(effect_name + i - oled_rgb_str_idx);
+        }
+      }
+      oled_write_ln(display_str, false);
+
+      --oled_rgb_str_idx;
+    }
 }
 
 /*
@@ -147,11 +330,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 */
 
+
 bool oled_task_user(void) {
   if (!is_keyboard_master()) {
     oled_render_layer_state();
     oled_render_mod_state();
     oled_render_led_state();
+    oled_render_rgb_state();
     // oled_write(get_u8_str(TAPPING_TERM, '\0'), false);
     // oled_write_raw_P(balloon_logo[oled_tracker], sizeof(balloon_logo[oled_tracker]));
   }
