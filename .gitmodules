@@ -24,3 +24,7 @@
 [submodule "keyboards/klein"]
 	path = keyboards/klein
 	url = https://github.com/shantanumhjn/Klein-qmk.git
+[submodule "lib/lvgl"]
+	path = lib/lvgl
+	url = https://github.com/qmk/lvgl.git
+	branch = release/v8.2
