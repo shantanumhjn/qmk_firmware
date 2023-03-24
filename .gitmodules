@@ -32,3 +32,7 @@
 	path = keyboards/nowt36lp
 	url = https://github.com/shantanumhjn/qmk_keyboards.git
 	branch = nowt36lp
+[submodule "keyboards/ladispad"]
+	path = keyboards/ladispad
+	url = https://github.com/shantanumhjn/qmk_keyboards.git
+	branch = ladispad
