@@ -36,3 +36,7 @@
 	path = keyboards/ladispad
 	url = https://github.com/shantanumhjn/qmk_keyboards.git
 	branch = ladispad
+[submodule "keyboards/scottoergo"]
+	path = keyboards/scottoergo
+	url = https://github.com/shantanumhjn/qmk_keyboards.git
+        branch = ScottoErgo
