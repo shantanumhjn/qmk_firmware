@@ -5,24 +5,18 @@
 
 #pragma once
 
-#define MASTER_RIGHT
-
-#define IGNORE_MOD_TAP_INTERRUPT
+// IGNORE_MOD_TAP_INTERRUPT is the default now
+// #define IGNORE_MOD_TAP_INTERRUPT
 
 // https://precondition.github.io/home-row-mods#tapping-force-hold
 // https://docs.qmk.fm/#/tap_hold?id=tapping-force-hold
-#define TAPPING_FORCE_HOLD
+// this has been replaced by QUICK_TAP_TERM, link above, this should be set to 0 as already set my miryoku by default
+// #define TAPPING_FORCE_HOLD
 
 
 // https://precondition.github.io/home-row-mods#permissive-hold
 // https://docs.qmk.fm/#/tap_hold?id=permissive-hold
 #define PERMISSIVE_HOLD
-
-// https://docs.qmk.fm/#/tap_hold?id=tapping-term
-// seems to work fine for me,
-// I have tendency to keep pinky fingers pressed
-#undef TAPPING_TERM
-#define TAPPING_TERM 250
 
 
 // base layer for windows
