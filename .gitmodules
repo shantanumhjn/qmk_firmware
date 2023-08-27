@@ -40,3 +40,7 @@
 	path = keyboards/scottoergo
 	url = https://github.com/shantanumhjn/qmk_keyboards.git
         branch = ScottoErgo
+[submodule "keyboards/lesovoz"]
+	path = keyboards/lesovoz
+	url = https://github.com/shantanumhjn/qmk_keyboards.git
+	branch = lesovoz
