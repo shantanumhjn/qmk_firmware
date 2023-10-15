@@ -28,19 +28,7 @@
 	path = lib/lvgl
 	url = https://github.com/qmk/lvgl.git
 	branch = release/v8.2
-[submodule "keyboards/nowt36lp"]
-	path = keyboards/nowt36lp
+[submodule "keyboards/shantanumhjn"]
+	path = keyboards/shantanumhjn
 	url = https://github.com/shantanumhjn/qmk_keyboards.git
-	branch = nowt36lp
-[submodule "keyboards/ladispad"]
-	path = keyboards/ladispad
-	url = https://github.com/shantanumhjn/qmk_keyboards.git
-	branch = ladispad
-[submodule "keyboards/scottoergo"]
-	path = keyboards/scottoergo
-	url = https://github.com/shantanumhjn/qmk_keyboards.git
-        branch = ScottoErgo
-[submodule "keyboards/lesovoz"]
-	path = keyboards/lesovoz
-	url = https://github.com/shantanumhjn/qmk_keyboards.git
-	branch = lesovoz
+	branch = main
