@@ -16,9 +16,9 @@ static uint32_t     oled_timer = 0;
 static int8_t      oled_rgb_str_idx = 0;
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-  // if (!is_keyboard_master()) {
-  //   return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-  // }
+  if (!is_keyboard_master()) {
+    return OLED_ROTATION_0;  // flips the display 180 degrees if offhand
+  }
   return rotation;
 }
 
